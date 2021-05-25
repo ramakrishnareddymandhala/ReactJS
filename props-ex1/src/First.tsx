@@ -29,7 +29,7 @@ class First extends Component<IProps,IState>{
         return(
             <React.Fragment>
                 <Second key1={this.state.key1}
-                key2={this.state.key2} key3={this.state.key3}></Second>
+                key2={this.state.key2} key3={this.state.key3}> Sending direct data</Second>
             </React.Fragment>
         )
     }
