@@ -14,7 +14,7 @@ class First extends Component<IProps,IState>{
     constructor(props:IProps){
         super(props);
         this.state = {
-            key1 : "Rk",
+            key1 : "Welcome to RK",
             key2:100,
             key3:[{"name":"Shirt","price":100,"rating":2.5,"image":"https://ashokitworkshop.s3.ap-south-1.amazonaws.com/p1.jpg"},
             {"name":"Polo Shirt","price":200,"rating":2.5,"image":"https://ashokitworkshop.s3.ap-south-1.amazonaws.com/p2.jpg"},
