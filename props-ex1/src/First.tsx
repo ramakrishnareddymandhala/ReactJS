@@ -36,7 +36,7 @@ class First extends Component<IProps,IState>{
     render(){
         return(
             <React.Fragment>
-                <input type="text" >{this.state.name}</input>
+                <h1>{this.state.name}</h1>
                 <Second key1={this.state.key1}
                 key2={this.state.key2} key3={this.state.key3}
                 modifyName={this.changeName}> Sending direct data</Second>
