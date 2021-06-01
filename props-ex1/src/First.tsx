@@ -5,6 +5,7 @@ interface IState{
     key1:string;
     key2:number;
     key3:any[];
+    name:string;
 };
 interface IProps{
 
@@ -20,16 +21,25 @@ class First extends Component<IProps,IState>{
             {"name":"Polo Shirt","price":200,"rating":2.5,"image":"https://ashokitworkshop.s3.ap-south-1.amazonaws.com/p2.jpg"},
             {"name":"American Shirt","price":300,"rating":2.5,"image":"https://ashokitworkshop.s3.ap-south-1.amazonaws.com/p3.jpg"},
             {"name":"Pant","price":400,"rating":2.5,"image":"https://ashokitworkshop.s3.ap-south-1.amazonaws.com/p4.jpg"},
-            {"name":"Pant1","price":500,"rating":2.5,"image":"https://ashokitworkshop.s3.ap-south-1.amazonaws.com/p5.jpg"}]
+            {"name":"Pant1","price":500,"rating":2.5,"image":"https://ashokitworkshop.s3.ap-south-1.amazonaws.com/p5.jpg"}],
+            name: "Rama Kirshna"
         
         }
+    };
+    changeName = (arg1:string):void => {
+
+        this.setState({
+            name : arg1
+        })
     };
 
     render(){
         return(
             <React.Fragment>
+                <input type="text" >{this.state.name}</input>
                 <Second key1={this.state.key1}
-                key2={this.state.key2} key3={this.state.key3}> Sending direct data</Second>
+                key2={this.state.key2} key3={this.state.key3}
+                modifyName={this.changeName}> Sending direct data</Second>
             </React.Fragment>
         )
     }
