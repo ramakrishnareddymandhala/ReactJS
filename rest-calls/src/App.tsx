@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
-import { Avatar, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core";
+import classes from "*.module.css";
 
 interface IState{
   res : any;
@@ -20,9 +21,9 @@ class App extends Component<IProps,IState>{
   }
 
   componentDidMount(){
-    axios.get("http://wsserver-env.eba-8ptwpwzp.ap-south-1.elasticbeanstalk.com/products").then((posRes) => {
+    axios.get("https://www.trackcorona.live/api/countries").then((posRes) => {
       this.setState({
-        res : posRes.data
+        res : posRes.data.data
       })
     }).catch((error) => {
       console.log(error)
@@ -32,34 +33,38 @@ class App extends Component<IProps,IState>{
   render(){
     return(
       <React.Fragment>
-        
-        <TableContainer component={Paper}>
-        <Table>
+        <Typography variant="h6" id="tableTitle" component="div">
+          Corna live status
+        </Typography>
+
+        <TableContainer component={Paper} >
+        <Table stickyHeader aria-label="sticky table">
+        <caption>A basic table example with a caption</caption>
                   <TableHead>
                     <TableRow>
-                        <TableCell>SNO</TableCell>
-                        <TableCell>NAME</TableCell>
-                        <TableCell>BRAND</TableCell>
-                        <TableCell>PRICE</TableCell>
-                        <TableCell>QTY</TableCell>
-                        <TableCell>Count</TableCell>
-                        <TableCell>Rating</TableCell>
-                        <TableCell>Description</TableCell>
-                        <TableCell>Image</TableCell>
+                        
+                        <TableCell>Country Name</TableCell>
+                        <TableCell>TotalCases</TableCell>
+                        <TableCell>Dead</TableCell>
+                        <TableCell>Recovered</TableCell>
+                        <TableCell>Last Updated</TableCell>
+                        <TableCell>County Code</TableCell>
+                        <TableCell>Latitude</TableCell>
+                      
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                       {this.state.res.map((element:any,index:any)=>(
+                       {this.state.res.map((element:any)=>(
                           <TableRow>
-                             <TableCell>{index+1}</TableCell>
-                             <TableCell>{element.name}</TableCell>
-                             <TableCell>{element.brand}</TableCell>
-                             <TableCell>{element.price}</TableCell>
-                             <TableCell>{element.qty}</TableCell>
-                             <TableCell>{element.count}</TableCell>
-                             <TableCell>{element.rating}</TableCell>
-                             <TableCell>{element.description}</TableCell>
-                             <TableCell><Avatar src={element.image}></Avatar></TableCell>
+                            
+                             <TableCell>{element.location}</TableCell>
+                             <TableCell>{element.confirmed}</TableCell>
+                             <TableCell>{element.dead}</TableCell>
+                             <TableCell>{element.recovered}</TableCell>
+                             <TableCell>{element.updated}</TableCell>
+                             <TableCell>{element.country_code}</TableCell>
+                             <TableCell>{element.latitude}</TableCell>
+                           
                           </TableRow>
                        ))}
                   </TableBody>
