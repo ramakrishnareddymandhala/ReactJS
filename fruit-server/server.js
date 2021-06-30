@@ -34,6 +34,27 @@ app.get("/products",(req,res)=>{
     );
 });
 
+
+//rest APi based on Category
+app.get("/products/:category",(req,res)=>{
+
+    dbClient.connect("mongodb+srv://admin:admin@cluster0.gb2ri.mongodb.net/miniproject?retryWrites=true&w=majority",(err,connection)=>{
+        if(err) throw err;
+        else{
+            const db = connection.db("miniproject");
+            db.collection("products").find({"category":req.params.category}).toArray((err,array)=>{
+
+                if(err) throw err;
+                else {
+                    res.send(array);
+                }
+            });
+        }
+    });
+
+})
+
+
 let port = process.env.PORT || 8080;
 app.listen(port,()=>{
     console.log("seever ready");
